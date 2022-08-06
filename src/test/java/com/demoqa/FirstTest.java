@@ -12,10 +12,10 @@ import static com.codeborne.selenide.Selenide.*;
 
 public class FirstTest {
     Faker faker = new Faker();
-    File file = new File("image-for-autotest.jpg");
+    File file = new File("src/test/resources/image-for-autotest.jpg");
 
     String firstName, lastName, email, genderValue, phoneNumber, birthday, year, month, day, firstSubject, secondSubject,
-            firstHobby, secondHobby, currentAddress, state, city;
+            firstHobby, secondHobby, filename, currentAddress, state, city;
     int randomNum;
 
     @BeforeEach
@@ -37,6 +37,7 @@ public class FirstTest {
         secondSubject = "Social Studies";
         firstHobby = "Sports";
         secondHobby = "Reading";
+        filename = "image-for-autotest.jpg";
         currentAddress = faker.address().fullAddress();
         state = "Haryana";
         city = "Panipat";
@@ -121,7 +122,7 @@ public class FirstTest {
                 "//*[contains(text(), 'Hobbies')]/following-sibling::*[contains(text(), '" + firstHobby + ", " + secondHobby + "')]"
         ).shouldBe(Condition.visible);
         $x(
-                "//*[contains(text(), 'Picture')]/following-sibling::*[contains(text(), '" + file + "')]"
+                "//*[contains(text(), 'Picture')]/following-sibling::*[contains(text(), '" + filename + "')]"
         ).shouldBe(Condition.visible);
 
         $x(
